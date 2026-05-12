@@ -1,15 +1,70 @@
 from fastapi import FastAPI, Request
 import time
 import sys
+import os
+import asyncio
 
-# Add projets to path for sovereign_essence
-sys.path.append("/home/agent-engineer/projets")
+# Fix paths
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(script_dir, "../.."))
+sys.path.append(project_root)
+
 try:
-    from sovereign_essence import engine
-except ImportError:
-    engine = None
+    from sovereign_entity.sovereign_v5 import SovereignV5
+    agent = SovereignV5()
+except ImportError as e:
+    print(f"Warning: Could not import SovereignV5: {e}")
+    agent = None
+
+try:
+    from vvv_vault.vault_core import VVVVault
+    vault = VVVVault()
+except ImportError as e:
+    print(f"Warning: Could not import VVVVault: {e}")
+    vault = None
 
 app = FastAPI(title="Yes Yield Execution Engine")
+
+@app.post("/webhook/kiwify")
+async def webhook_kiwify(request: Request):
+    data = await request.json()
+    print(f"[YES] Received Kiwify Webhook: {data.get('order_status')}")
+    
+    # If sale is approved, trigger autonomous expansion
+    if data.get("order_status") == "paid":
+        product_name = data.get("product_name", "unknown")
+        objective = f"Scale marketing for {product_name} due to successful sale"
+        if agent:
+            asyncio.create_task(agent.achieve_maximum_result(objective))
+            
+    return {"status": "webhook_received"}
+
+@app.post("/webhook/hotmart")
+async def webhook_hotmart(request: Request):
+    data = await request.json()
+    print(f"[YES] Received Hotmart Webhook: {data.get('event')}")
+    
+    if data.get("event") == "PURCHASE_APPROVED":
+        objective = "Analyze purchase data and optimize funnel"
+        if agent:
+            asyncio.create_task(agent.achieve_maximum_result(objective))
+            
+    return {"status": "webhook_received"}
+
+@app.post("/command")
+async def run_command(payload: dict):
+    cmd = payload.get("command")
+    args = payload.get("args", [])
+    print(f"[YES] Internal Command Received: {cmd} with args {args}")
+    
+    if agent and cmd == "deploy-lp":
+        niche = args[0] if len(args) > 0 else "generic"
+        project_name = args[1] if len(args) > 1 else f"auto-lp-{niche}"
+        objective = f"Create landing page for {niche} named {project_name}"
+        result = await agent.achieve_maximum_result(objective)
+        return {"status": "command_executed", "result": result}
+        
+    return {"status": "command_not_found"}
 
 def execute_high_yield(refinement_result: dict):
     # Logic from Expansion Implementation Plan:

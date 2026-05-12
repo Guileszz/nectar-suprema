@@ -3,12 +3,22 @@ import time
 import sys
 import httpx
 
-# Add projets to path for sovereign_essence
-sys.path.append("/home/agent-engineer/projets")
+import os
+
+# Add project root to path
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.abspath(os.path.join(script_dir, "../../.."))
+sys.path.append(project_root)
+sys.path.append(os.path.join(project_root, "src"))
+
 try:
-    from sovereign_essence import nexus_v5
-except ImportError:
-    nexus_v5 = None
+    from sovereign_entity.sovereign_v5 import SovereignV5
+    from mirror_protocol.registry import registry
+    sovereign = SovereignV5()
+except ImportError as e:
+    print(f"Warning: Module import failed: {e}")
+    sovereign = None
+    registry = None
 
 app = FastAPI(title="Nov Predictive Observer")
 
@@ -21,13 +31,14 @@ async def observe(data: dict):
     telemetry_signal = f"Telemetry {data.get('name')}: {data.get('notes')} (Rating: {data.get('rating')})"
     
     prediction = "NORMAL"
-    if nexus_v5:
-        prediction = await nexus_v5.predict_and_serve(telemetry_signal)
-        print(f"[NOV] Nexus Prediction: {prediction}")
+    if sovereign:
+        prediction = await sovereign.achieve_maximum_result(telemetry_signal)
+        print(f"[NOV] Sovereign Prediction: {prediction}")
 
-    # Logic from Expansion Implementation Plan:
-    # If prediction indicates a critical state, trigger protocol
+    # Broadcast via Mirror Protocol if it's an anomaly
     is_anomaly = data.get("rating", 5) < 3
+    if registry and is_anomaly:
+        await registry.broadcast("ANOMALY_DETECTED", {"data": data, "prediction": prediction})
     if "CRITICAL" in prediction or "DEGRADED" in prediction or is_anomaly:
         print(f"[NOV] TRIGGERING REFINEMENT based on: {prediction if not is_anomaly else 'LOW_RATING'}")
         async with httpx.AsyncClient() as client:

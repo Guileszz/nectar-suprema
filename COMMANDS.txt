@@ -14,24 +14,15 @@ COMO USAR ESTE SISTEMA:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
   /novo-copy [nicho]         → Solicitar novo copy de vendas
-  /nova-landing              → Solicitar nova landing page
+  /deploy-supremo [nicho]   → Deploy local de Landing Page
+  /deploy-auto [nicho]      → Deploy autônomo (Push + GitHub Pages)
+  /vault-store [nicho]      → Proteger lista de fornecedores
+  /vault-retrieve [nicho]   → Recuperar lista protegida
   /email-sequencia [nicho]    → Gerar sequência de emails
   /script-reel [nicho]       → Gerar script para Reels/Shorts
   /fornecedores [nicho]       → Listar fornecedores do nicho
 
   EXEMPLO: /novo-copy fitness
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🌌 SUPER-HABILIDADES IA (AETHER FLOW)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-  /expandir-total            → Orquestrar criação de copy, LP e automação 
-                               para os 3 nichos mais lucrativos do momento
-  /expandir-total [nicho]    → Executar expansão total para um nicho específico
-  /scanner-mercado           → Listar previsões de nichos com maior ROI
-
-  EXEMPLO: /expandir-total energia-solar
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -99,8 +90,8 @@ COMO USAR ESTE SISTEMA:
 
   AETHER FLOW
   - Função: Evolução contínua do ecossistema
-  - Uso: Crescimento orgânico e expansão de nichos (Expansion Nexus)
-  - Status: ✅ Ativo (Novo: /expandir-total)
+  - Uso: Crescimento orgânico do sistema
+  - Status: ✅ Ativo
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
