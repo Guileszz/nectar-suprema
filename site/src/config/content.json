@@ -1,0 +1,35 @@
+{
+  "market": "BR",
+  "language": "pt",
+  "pricing": "BRL",
+  "hero": {
+    "headline": "A Lista de +500 Fornecedores que REALMENTE Respondem para Fazer Dropshipping do Zero",
+    "subheadline": "Chega de perder tempo com fornecedores que não entregam. Acesso vitalício por apenas R$ 47.",
+    "cta": "QUERO MINHA LISTA AGORA",
+    "trust_badges": [
+      "✅ Acesso Vitalício",
+      "✅ 7 Dias de Garantia",
+      "✅ Atualização Mensal"
+    ]
+  },
+  "pricing_section": {
+    "title": "OFERTA ESPECIAL DE LANÇAMENTO",
+    "discount_tag": "ECONOMIZE 60%",
+    "old_price": "De R$ 127",
+    "price_label": "por apenas",
+    "new_price": "R$ 47",
+    "installments_label": "ou 3x de R$ 16,67 sem juros",
+    "cta": "🔓 LIBERAR MEU ACESSO AGORA",
+    "checkout_url": "https://pay.kiwify.com.br/checkout",
+    "guarantees": [
+      "Garantia Incondicional de 7 Dias",
+      "Compra 100% Segura (Kiwiify/Hotmart)"
+    ],
+    "bonuses_title": "🎁 BÔNUS EXCLUSIVOS (VAGAS LIMITADAS)",
+    "bonuses": [
+      "E-book: Método de Vendas Para Iniciantes (R$ 27)",
+      "Planilha de Gestão Financeira para Dropshipping (R$ 17)",
+      "Grupo VIP no WhatsApp com Suporte (R$ 47/mês)"
+    ]
+  }
+}
